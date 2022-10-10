@@ -31,16 +31,15 @@ public class CartController {
                             @PathVariable("quantity")Integer quantity, Model model) {
 
         cartService.addToCart(productId,quantity);
-        model.addAttribute("cart",CART);
 
-        return "/cart/show-cart";
+        return "redirect:/cart";
     }
 
     @GetMapping("/delete/{productId}")
     public String deleteProduct(@PathVariable("productId") UUID productId, Model model) {
 
         cartService.deleteFromCart(productId);
-        model.addAttribute("cart",CART);
-        return "/cart/show-cart";
+
+        return "redirect:/cart";
     }
 }
